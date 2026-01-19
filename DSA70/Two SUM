@@ -1,0 +1,25 @@
+Problem link : https://leetcode.com/problems/two-sum/
+
+Solution:
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        mp = {}
+        lst = []
+        companion = 0
+        for i in range(len(nums)):
+            companion = target - nums[i]
+            if companion in mp:
+                lst.append(mp.get(companion))
+                lst.append(i)
+                break
+            elif companion not in mp:
+                mp[nums[i]] = i
+        return lst
+            
+
+explanation:
+
+1) create map where we store the element and its correspoding index.
+2) we keep the difference between the target and present element and find if the companion present in map, if it is then we return value of index of companion from map and current value of the index.
+3) So basically we are storing the map(element,index) and if companion exist we return it.
